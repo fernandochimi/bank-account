@@ -12,7 +12,7 @@ Check if you have the follow tools:
 
 ### Run application
 1. First, clone this repository into your local machine using the follow command:
-`git clone [TODO]fernando_chimi/bank-account.git`
+`git clone git@github.com:fernandochimi/bank-account.git`
 2. Run `make execute` to build and run the application
 3. Go! :rocket:
 
