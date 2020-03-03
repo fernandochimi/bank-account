@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  db:
+    container_name: bankaccountdb
+    image: postgres
+    restart: on-failure
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: bankaccount
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+
+  bank-account:
+    container_name: bank-account
+    build: .
+    restart: on-failure
+    command: sh -c "go install github.com/fernandochimi/bank-account && /go/bin/bank-account"
+    volumes:
+      - .:/go/src/github.com/fernandochimi/bank-account
+    ports:
+      - "8000:8000"
+    env_file: config/api.env
+    depends_on:
+      - db
